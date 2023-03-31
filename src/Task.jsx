@@ -3,7 +3,7 @@ import {RxCrossCircled} from 'react-icons/rx'
 
 function Task({ts, onClick, onRemind}) {
     return (
-    <div style={{width:"30%", background:"green", alignContent:'center', marginLeft:400}}>
+    <div style={{width:"30%", background:"violet", alignContent:'center', marginLeft:400}}>
         <div className={`${ts.reminder?'reminder':''}`} style = {{textAlign:'center'}} onDoubleClick={()=>onRemind(ts.id)}>
             <h2 style={{color:'white'}}>{ts.text}</h2>
         </div>

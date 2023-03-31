@@ -34,12 +34,10 @@ function App() {
     
 }
   ])
+  const [showForm, setShowForm] = useState(false)
   
-
-  
-
   const rClick = ()=>{
-    console.log("Clicked the Red Button")
+    setShowForm(!showForm)
   }
 
 const gClick = ()=>{
@@ -53,6 +51,11 @@ const gClick = ()=>{
     task.id !==id
     ))
   }
+  /*const deleteTask = async (id) => {
+
+    await fetch(`http://localhost:5000/tasks/${id}`,{
+      method: 'DELETE'
+    })*/
   
   const onRemind =(id) =>{
     setTasks(
@@ -73,12 +76,16 @@ const gClick = ()=>{
       <h1>Task App</h1>
       <Header headings="HELLO"></Header>
       <h2>Welcome</h2>
-      <AddTask onAdd={onAdd}/>
+      
       <Tasks tasks={tasks} onClick={onDelete} onRemind={onRemind}/>
 
-      <Button color='red' text='Button 1' onClick={rClick}/>
-      <Button color='green' text= "Button 2" onClick={gClick}/>
-      <Button color='blue' text="Button 3" onClick={bClick}/>
+      <Button color= {showForm ? "red":"green"} text={showForm ? "EXIT":"ADD"} onClick={rClick}/>
+      {showForm && <AddTask onAdd={onAdd}/>}
+      <br></br>
+      <br></br>
+
+      <Button color='green' text= "Green Button" onClick={gClick}/>
+      <Button color='blue' text="Blue Button" onClick={bClick}/>
       
       <Footer ftr='Akhila || 2023'></Footer>
       </div>
